@@ -31,10 +31,15 @@ public class AccountTest {
     }
     @Test
     public void testThatWithdrawIsNotMoreThanBalance(){
+        //given
         Account tobiAccount = new Account();
+        //when
         tobiAccount.withdraw(200);
         double tobiBalance = tobiAccount.getAccountBalance();
+        //check that
         assertEquals(0,tobiBalance);
     }
+
+
 
 }

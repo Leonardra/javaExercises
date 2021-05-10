@@ -18,6 +18,8 @@ public class Account {
     public void withdraw(int amountToWithdraw) {
         boolean notTrue = amountToWithdraw < 0;
 
+        int myAccountBalance = 500;
+
         if(amountToWithdraw>myAccountBalance){
             System.out.println("Insufficient cash");
         }
@@ -27,6 +29,8 @@ public class Account {
         }
         else
             myAccountBalance = amountToWithdraw ;
+
+
 
 
 
