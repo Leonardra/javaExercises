@@ -5,24 +5,25 @@ public class Bike {
     private boolean isOn;
     private int speedInKmPerHour;
     private int currentGearNumber;
+    private double fuelGaugeInLitre;
 
     public void setOn(boolean bikeIgnition) {
-        isOn = bikeIgnition;
-        if(this.isOn){
+//        isOn = bikeIgnition;
+        if (bikeIgnition && fuelGaugeInLitre > 0) {
             currentGearNumber = 1;
-        }
-        else{
+            isOn = bikeIgnition;
+        } else {
             currentGearNumber = 0;
         }
 
     }
 
-    public Object bikeIsOn(){
+    public boolean bikeIsOn(){
         return isOn;
     }
 
     public void setSpeedInKmPerHour(int currentSpeed) {
-        if (isOn) {
+        if (isOn && currentSpeed <= 80) {
             speedInKmPerHour = currentSpeed;
         }
     }
@@ -73,9 +74,7 @@ public class Bike {
         speedInKmPerHour = speedInKmPerHour - currentGearNumber;
     }
 
-    public void speedLimit() {
-        if(speedInKmPerHour >= 80){
-        System.out.println("Speed limit is reached");
-        }
+    public void setFuelGaugeInLitre(int fuelGauge) {
+        fuelGaugeInLitre = fuelGauge;
     }
 }

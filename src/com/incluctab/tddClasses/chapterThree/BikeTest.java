@@ -33,7 +33,7 @@ public class BikeTest {
     public void testThatBikeDoesNotSetSpeedWhenOff(){
         //given
         newBike.setOn(false);
-        assertFalse((Boolean) newBike.bikeIsOn());
+        assertFalse(newBike.bikeIsOn());
         newBike.setSpeedInKmPerHour(0);
         //check that
         assertEquals(0, newBike.getSpeedInKmPerHour());
@@ -42,8 +42,9 @@ public class BikeTest {
     @Test
     public void testThatBikeCanAccelerate(){
         //given
+        newBike.setFuelGaugeInLitre(40);
         newBike.setOn(true);
-        assertTrue((Boolean) newBike.bikeIsOn());
+        assertTrue(newBike.bikeIsOn());
         newBike.setSpeedInKmPerHour(15);
         newBike.setCurrentGearNumber(1);
         assertEquals(1, newBike.getCurrentGearNumber());
@@ -57,6 +58,7 @@ public class BikeTest {
     @Test
     public void testThatBikeCanDecelerate(){
         //when
+        newBike.setFuelGaugeInLitre(60);
         newBike.setOn(true);
         newBike.setSpeedInKmPerHour(22);
         newBike.accelerate();
@@ -69,11 +71,20 @@ public class BikeTest {
     @Test
     public void testThatBikeShowsWarningIfSpeedLimitIsSurpassed(){
         //when
+        newBike.setFuelGaugeInLitre(60);
         newBike.setOn(true);
-        newBike.setSpeedInKmPerHour(80);
-        newBike.speedLimit();
-        assertEquals(80, newBike.getSpeedInKmPerHour());
+        newBike.setSpeedInKmPerHour(76);
+        newBike.setSpeedInKmPerHour(90);
+        assertEquals(76, newBike.getSpeedInKmPerHour());
     }
+    @Test
+    public void testThatBikeWillNotComeOnWhenFuelGaugeIsEmpty(){
+        //when
+        newBike.setOn(false);
+        newBike.setFuelGaugeInLitre(0);
+        newBike.setOn(true);
+        assertFalse(newBike.bikeIsOn());
 
+    }
 
 }
