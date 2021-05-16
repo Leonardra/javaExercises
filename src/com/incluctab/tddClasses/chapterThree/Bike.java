@@ -72,4 +72,10 @@ public class Bike {
 
         speedInKmPerHour = speedInKmPerHour - currentGearNumber;
     }
+
+    public void speedLimit() {
+        if(speedInKmPerHour >= 80){
+        System.out.println("Speed limit is reached");
+        }
+    }
 }

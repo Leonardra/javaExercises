@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 Requirements
 1) Bike should be changed speed till its on.
 2) Bike can accelerate and decelerate
-2) Gears should change automatically:
+3) Gears should change automatically:
  - If Speed reaches 20, current gear number changes from 1 to 2
  - If Speed reaches 40, current gear number changes from 2 to 3
  - If speed reaches 60, current gear number changes from 3 to 4
@@ -66,5 +66,14 @@ public class BikeTest {
         newBike.decelerate();
         assertEquals(1, newBike.getCurrentGearNumber());
     }
+    @Test
+    public void testThatBikeShowsWarningIfSpeedLimitIsSurpassed(){
+        //when
+        newBike.setOn(true);
+        newBike.setSpeedInKmPerHour(80);
+        newBike.speedLimit();
+        assertEquals(80, newBike.getSpeedInKmPerHour());
+    }
+
 
 }
