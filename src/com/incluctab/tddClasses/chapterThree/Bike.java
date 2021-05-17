@@ -8,7 +8,6 @@ public class Bike {
     private double fuelGaugeInLitre;
 
     public void setOn(boolean bikeIgnition) {
-//        isOn = bikeIgnition;
         if (bikeIgnition && fuelGaugeInLitre > 0) {
             currentGearNumber = 1;
             isOn = bikeIgnition;
