@@ -4,7 +4,7 @@ public class AirConditioner {
 
     private String productName;
     private boolean isOn;
-    private int temperature;
+    private int temperature = 16;
 
     public AirConditioner (String brandName){
         productName = brandName;
@@ -12,7 +12,6 @@ public class AirConditioner {
 
     public void setOn(boolean ignition) {
         isOn = ignition;
-
     }
 
     public boolean isOn() {
@@ -28,8 +27,7 @@ public class AirConditioner {
     }
 
     public void setTemperature(int currentTemperature) {
-            temperature = currentTemperature;
-
+        temperature = currentTemperature;
     }
 
     public int getTemperature() {

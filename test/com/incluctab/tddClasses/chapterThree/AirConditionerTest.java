@@ -64,5 +64,9 @@ public class AirConditionerTest {
         myAirConditioner.increaseTemperature();
         assertEquals(29, myAirConditioner.getTemperature());
     }
-
+    @Test
+    public void testThatAirConditionHasDefaultTemperatureWhenTurnedOn(){
+        myAirConditioner.setOn(true);
+        assertEquals(16, myAirConditioner.getTemperature());
+    }
 }
