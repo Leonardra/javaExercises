@@ -1,6 +1,5 @@
 package com.incluctab.tddClasses.chapterThree;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -68,19 +67,6 @@ public class TelevisionTest {
         myTelevision.increaseVolume();//volume 10
         //check that
         assertEquals(10, myTelevision.getVolume());
-    }
-
-    @Test
-    public void testThatVolumeMustNotGoBelowTheMinimumNumber(){
-        //when
-        Television myTelevision = new Television("Samsung");
-        myTelevision.setOn(true);
-        myTelevision.increaseVolume();
-        assertEquals(1, myTelevision.getVolume());
-        //given
-        myTelevision.decreaseVolume();
-        //check that
-        assertEquals(1, myTelevision.getVolume());
     }
 
     @Test
@@ -167,17 +153,6 @@ public class TelevisionTest {
     }
 
     @Test
-    public void testThatTelevisionChannelShouldNotIncreaseThan100(){
-        //when
-        Television myTelevision = new Television("Samsung");
-        myTelevision.setOn(true);
-        myTelevision.setChannel(100);
-        //given
-        myTelevision.increaseChannelFrequency();
-        assertEquals(100, myTelevision.getChannel());
-    }
-
-    @Test
     public void testThatTelevisionCanDecreaseChannelFrequency(){
         //when
         Television myTelevision = new Television("Samsung");
@@ -231,5 +206,30 @@ public class TelevisionTest {
         //given
         myTelevision.decreaseBrightness();
         assertEquals(1, myTelevision.getBrightness());
+    }
+
+    @Test
+    public void testThatChannelShouldGoBackToChannel1AfterChannel100(){
+        //when
+        Television myTelevision = new Television("Samsung");
+        myTelevision.setOn(true);
+        //given
+        myTelevision.setChannel(100);
+        myTelevision.increaseChannelFrequency();
+        //check that
+        assertEquals(1, myTelevision.getChannel());
+    }
+
+    @Test
+    public void testThatAudioShouldBeMutedIfVolumeIsDecreasedBelowZero(){
+        //when
+        Television myTelevision = new Television("Samsung");
+        myTelevision.setOn(true);
+        myTelevision.increaseVolume();
+        //given
+        myTelevision.decreaseVolume();
+        myTelevision.decreaseVolume();
+        //check that
+        assertTrue(myTelevision.getMute());
     }
 }

@@ -6,6 +6,7 @@ public class Television {
     private int channel;
     private int temporaryChannel;
     private int brightness;
+    private boolean mute;
 
     public Television(String brandName) {
 
@@ -37,9 +38,11 @@ public class Television {
     }
 
     public void decreaseVolume() {
-        int minimumNumber = 1;
-        if(isOn && volume > minimumNumber) {
+        if(isOn && !mute) {
             volume = volume - 1;
+            if(volume < 0){
+                this.setMute(true);
+            }
         }
     }
 
@@ -54,14 +57,22 @@ public class Television {
     }
 
     public void increaseChannelFrequency() {
-        if(isOn && channel < 100) {
-            channel = channel + 1;
+        if(isOn){
+            if(channel < 100){
+
+                channel = channel + 1;
+            } else {
+                channel = channel - 99;
+            }
         }
+
     }
+
 
     public void decreaseChannelFrequency() {
         if(isOn && channel > 1) {
             channel = channel - 1;
+
         }
     }
 
@@ -75,5 +86,13 @@ public class Television {
 
     public void decreaseBrightness() {
         brightness = brightness - 1;
+    }
+
+    public void setMute(boolean mute) {
+        this.mute = mute;
+    }
+
+    public boolean getMute() {
+        return mute;
     }
 }
