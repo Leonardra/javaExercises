@@ -1,4 +1,4 @@
-package com.incluctab.tddClasses;
+package com.incluctab.tddClasses.chapterTwo;
 
 import javax.swing.*;
 import java.util.Scanner;
@@ -18,12 +18,10 @@ public class DigitSeparator {
             int firstDigit = (userInput / 10000);
             int secondDigit = ((userInput / 1000) % 10);
             int thirdDigit = ((userInput / 100) % 10);
-            int fourthDigit = ((userInput % 10) / 10);
-            int fifthDigit = (userInput % 100);
+            int fourthDigit = ((userInput % 100) / 10);
+            int fifthDigit = (userInput % 10);
 
-            if(true){
-                System.out.printf(" %d   %d   %d   %d   %d", firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit);
-            }
+            System.out.printf(" %d   %d   %d   %d   %d", firstDigit, secondDigit, thirdDigit, fourthDigit, fifthDigit);
 
         }
 
