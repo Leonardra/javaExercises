@@ -33,6 +33,59 @@ public class KataTest {
         Kata newKata = new Kata();
         assertEquals("F", newKata.grade(43));
     }
+
+    @Test
+    public void testThatCopiesBetween4and1IsOneThousandFiveHundredNaira(){
+        Kata newKata = new Kata();
+        newKata.numberOfCopies(4);
+        assertEquals(1500, newKata.numberOfCopies(4));
+    }
+
+    @Test
+    public void testThatCopiesBetween5And9IsOneThousandFourHundredNaira(){
+        Kata newKata = new Kata();
+        assertEquals(1400, newKata.numberOfCopies(6));
+    }
+
+    @Test
+    public void testThatCopiesBetween10And29IsOneThousandTwoHundredNaira(){
+        Kata newKata = new Kata();
+        assertEquals(1200, newKata.numberOfCopies(29));
+    }
+
+    @Test
+    public void testThatCopiesBetween30And49IsOneThousandOneHundredNaira(){
+        Kata newKata = new Kata();
+        assertEquals(1100, newKata.numberOfCopies(36));
+    }
+
+    @Test
+    public void testThatCopiesBetween50And99IsOneThousandNaira(){
+        Kata newKata = new Kata();
+        assertEquals(1000, newKata.numberOfCopies(67));
+    }
+
+    @Test
+    public void testThatCopiesBetween100And199IsNineHundredNaira(){
+        Kata newKata = new Kata();
+        assertEquals(900, newKata.numberOfCopies(197));
+    }
+
+    @Test
+    public void testThatCopiesBetween200AndAboveIsEightHundredNaira(){
+        Kata newKata = new Kata();
+        assertEquals(800, newKata.numberOfCopies(2000));
+    }
+
+    @Test
+    public void testThatNumbersOfAFactorsAreCounted(){
+        Kata newKata = new Kata();
+        assertEquals(4, newKata.countNumberOfFactors(10));
+
+    }
+
+
+
 }
 
 
