@@ -60,6 +60,7 @@ public class ChristmasSong {
 
             }
             System.out.println(" ");
+            System.out.println(" ");
             dayInChristmas +=1;
             verses +=1;
 
