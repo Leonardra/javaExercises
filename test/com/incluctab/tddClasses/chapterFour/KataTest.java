@@ -84,6 +84,22 @@ public class KataTest {
 
     }
 
+    @Test
+    public void testThatNumberCanBeReversed(){
+        Kata newKata = new Kata();
+        newKata.reverseNumber(98123);
+        assertEquals(32189,newKata.reverseNumber(98123));
+    }
+
+    @Test
+    public void testThatNumberTakesInOnlyFiveDigits(){
+        Kata newKata = new Kata();
+        newKata.reverseNumber(12398);
+        assertEquals(89321, newKata.reverseNumber(12398));
+    }
+
+
+
 
 
 }
