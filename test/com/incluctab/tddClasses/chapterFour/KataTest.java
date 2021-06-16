@@ -1,56 +1,47 @@
 package com.incluctab.tddClasses.chapterFour;
 
+import com.incluctab.tddClasses.chapterFive.Asterick;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 public class KataTest {
     @Test
     public void testThatScoresBetween90AndAboveShouldBeGradeA() {
-        Kata newKata = new Kata();
-        assertEquals("A", newKata.grade(95));
+        assertEquals("A", Kata.grade(95));
     }
 
     @Test
     public void testThatScoresBetween80And89ShouldBeGradeB() {
-        Kata newKata = new Kata();
-        assertEquals("B", newKata.grade(89));
+        assertEquals("B", Kata.grade(89));
     }
     @Test
     public void testThatScoresBetween70And79ShouldBeGradeC(){
-        Kata newKata = new Kata();
-        assertEquals("C", newKata.grade(76));
+        assertEquals("C", Kata.grade(76));
     }
     @Test
     public void testThatScoresBetween60And69ShouldBeGradeD(){
-        Kata newKata = new Kata();
-        assertEquals("D", newKata.grade(65));
+        assertEquals("D", Kata.grade(65));
     }
 
     @Test
     public void testThatScoresBetween59andBelowShouldBeGradeF(){
-        Kata newKata = new Kata();
-        assertEquals("F", newKata.grade(43));
+        assertEquals("F", Kata.grade(43));
     }
 
     @Test
     public void testThatCopiesBetween4and1IsOneThousandFiveHundredNaira(){
-        Kata newKata = new Kata();
-        newKata.numberOfCopies(4);
-        assertEquals(1500, newKata.numberOfCopies(4));
+        assertEquals(1500, Kata.numberOfCopies(4));
     }
 
     @Test
     public void testThatCopiesBetween5And9IsOneThousandFourHundredNaira(){
-        Kata newKata = new Kata();
-        assertEquals(1400, newKata.numberOfCopies(6));
+        assertEquals(1400, Kata.numberOfCopies(6));
     }
 
     @Test
     public void testThatCopiesBetween10And29IsOneThousandTwoHundredNaira(){
-        Kata newKata = new Kata();
-        assertEquals(1200, newKata.numberOfCopies(29));
+        assertEquals(1200, Kata.numberOfCopies(29));
     }
 
     @Test
@@ -79,23 +70,62 @@ public class KataTest {
 
     @Test
     public void testThatNumbersOfAFactorsAreCounted(){
-        Kata newKata = new Kata();
-        assertEquals(4, newKata.countNumberOfFactors(10));
-
+        assertEquals(4, Kata.countNumberOfFactors(10));
     }
 
     @Test
     public void testThatNumberCanBeReversed(){
-        Kata newKata = new Kata();
-        newKata.reverseNumber(98123);
-        assertEquals(32189,newKata.reverseNumber(98123));
+        assertEquals(32189,Kata.reverseNumber(98123));
     }
 
     @Test
     public void testThatNumberTakesInOnlyFiveDigits(){
-        Kata newKata = new Kata();
-        newKata.reverseNumber(12398);
-        assertEquals(89321, newKata.reverseNumber(12398));
+        assertEquals(89321, Kata.reverseNumber(12398));
+    }
+
+    @Test
+    public void testThatMethodCanFindFactorialOfANumber(){
+        assertEquals(720, Kata.findFactorialOf(6));
+        assertEquals(120, Kata.findFactorialOf(5));
+        assertEquals(24, Kata.findFactorialOf(4));
+        assertEquals(6, Kata.findFactorialOf(3));
+        assertEquals(2,Kata.findFactorialOf(2));
+    }
+
+    @Test
+    public void testThatTapCanPourWater(){
+        assertEquals(20, Kata.waterIsFull(1));
+    }
+
+    @Test
+    public void testThatBase10CanBeConvertedToBase2(){
+        Kata.getBinaryNumber(18);
+        assertEquals("10010", Kata.getBinaryNumber(18));
+    }
+
+    @Test
+    public void testThatBaseNumberConverterWorks(){
+        Kata.numberBaseConverter(18,2);
+        assertEquals("10010", Kata.numberBaseConverter(18, 2));
+    }
+
+    @Test
+    void thatMethodCanFindMaximumNumberFromArray(){
+        int[] numberSeries = {12, 34, 45, 90, 56, 23, 10};
+        assertEquals(90, Kata.findMaximumNumberFrom(numberSeries));
+
+    }
+
+    @Test
+    void thatMethodCanFindMinimumNumberFromArray(){
+        int[] numberSeries = {12, 34, 45, 56, 78, 10, 90};
+        assertEquals(10, Kata.findMinimumNumberFrom(numberSeries));
+    }
+
+    @Test
+    void thatMethodCanFindAverageFromArray(){
+        int[] numberSeries = {12, 34, 45, 56, 78, 10, 90};
+        assertEquals(46.43, Kata.findAverageFrom(numberSeries));
     }
 
 

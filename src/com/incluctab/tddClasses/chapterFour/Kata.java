@@ -2,7 +2,76 @@ package com.incluctab.tddClasses.chapterFour;
 
 public class Kata {
 
-    public String grade(int score) {
+    public static String getBinaryNumber(int input) {
+        int quotient = input;
+        String binaryResult = "";
+        while(quotient != 0) {
+            int remainder = quotient % 2;
+            quotient = quotient / 2;
+            binaryResult += remainder;
+        }
+        String result = "";
+        for (int i = binaryResult.length() - 1; i >= 0; i--) {
+            result += binaryResult.charAt(i);
+        }
+        return result;
+    }
+
+    public static String numberBaseConverter(int input, int baseNumber) {
+        int quotient = input;
+        String binaryResult = "";
+        while(quotient != 0) {
+            int remainder = quotient % baseNumber;
+            quotient = quotient / baseNumber;
+            binaryResult += remainder;
+        }
+        String result = "";
+        for (int i = binaryResult.length() - 1; i >= 0; i--) {
+            result += binaryResult.charAt(i);
+        }
+        return result;
+    }
+
+    public static int findMaximumNumberFrom(int[] numberSeries) {
+        int counter = 0;
+        int maximumNumber = 0;
+        while(counter < numberSeries.length){
+            if (numberSeries[counter] > maximumNumber) {
+                maximumNumber = numberSeries[counter];
+            }
+            counter++;
+        }
+        return maximumNumber;
+    }
+
+    public static int findMinimumNumberFrom(int[] numberSeries) {
+        int counter = 0;
+        int minimumNumber = numberSeries[0];
+        while(counter < numberSeries.length){
+            if(numberSeries[counter] < minimumNumber){
+                minimumNumber = numberSeries[counter];
+            }
+            counter++;
+        }
+        return minimumNumber;
+    }
+
+    public static double findAverageFrom(int[] numberSeries) {
+        int counter = 0;
+        double sum = 0;
+        double average = 0.0;
+
+        while(counter < numberSeries.length){
+            sum += numberSeries[counter];
+            counter++;
+        }
+        average = sum / numberSeries.length;
+
+        return Math.round(average * 100.0)/100.0;
+    }
+
+
+    public static String grade(int score) {
         if (score >= 90) {
             return "A";
         } else {
@@ -24,7 +93,7 @@ public class Kata {
     }
 
 
-    public int numberOfCopies(int copies) {
+    public static int numberOfCopies(int copies) {
         if (copies > 0 && copies <= 4) {
             return 1500;
         } else {
@@ -52,7 +121,7 @@ public class Kata {
         }
     }
 
-    public int countNumberOfFactors(int factor) {
+    public static int countNumberOfFactors(int factor) {
         int minimumNumber = 1;
         int countOfFactors = 0;
 
@@ -66,7 +135,7 @@ public class Kata {
         return countOfFactors;
     }
 
-    public int reverseNumber(int numberReversed) {
+    public static int reverseNumber(int numberReversed) {
 
         if (numberReversed >= 10000 && numberReversed <= 99999) {
             int firstNumber = numberReversed / 10000;
@@ -84,5 +153,26 @@ public class Kata {
         }
 
 
+    }
+
+    public static int findFactorialOf(int number) {
+        int factorial = 1;
+        while(number > 1){
+                factorial = factorial * number;
+                number -= 1;
+        }
+        return factorial;
+    }
+
+    public static int waterIsFull(int waterVolume){
+        int litreOfBucket = 20;
+        while(litreOfBucket >= waterVolume){
+            System.out.println("Water is Pouring" +waterVolume++);
+            if(waterVolume > litreOfBucket){
+                System.out.println("Water is full");
+            }
+//            waterVolume++;
+        }
+        return litreOfBucket;
     }
 }
