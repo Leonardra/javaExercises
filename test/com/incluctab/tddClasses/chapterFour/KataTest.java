@@ -107,6 +107,7 @@ public class KataTest {
     public void testThatBaseNumberConverterWorks(){
         Kata.numberBaseConverter(18,2);
         assertEquals("10010", Kata.numberBaseConverter(18, 2));
+        assertEquals("A", Kata.numberBaseConverter(10,18));
     }
 
     @Test
@@ -126,6 +127,20 @@ public class KataTest {
     void thatMethodCanFindAverageFromArray(){
         int[] numberSeries = {12, 34, 45, 56, 78, 10, 90};
         assertEquals(46.43, Kata.findAverageFrom(numberSeries));
+    }
+
+    @Test
+    void thatMethodCanSumThroughAnArray_andReturnMaximumNumber(){
+        int[] numberSeries = {12, 34, 45, 56, 78, 10, 90};
+        assertEquals(315, Kata.findMaximumFromSumOf(numberSeries));
+    }
+
+    @Test
+    void thatMethodCanSumThroughAnArray_andReturnMinimumNumber(){
+        int[] numberSeries = {12, 34, 45, 56, 78, 10, 90};
+        assertEquals(235, Kata.findMinimumFromSumOf(numberSeries));
+        numberSeries = new int [] {1,2,3,4,5};
+        assertEquals(10, Kata.findMinimumFromSumOf(numberSeries));
     }
 
 

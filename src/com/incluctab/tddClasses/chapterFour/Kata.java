@@ -175,4 +175,47 @@ public class Kata {
         }
         return litreOfBucket;
     }
+
+    public static int findMaximumFromSumOf(int[] numberSeries) {
+        int counter = 0;
+        int maximumNumber = 0;
+        int sum = 0;
+        while (counter < numberSeries.length) {
+            sum += numberSeries[counter];
+            counter++;
+        }
+        counter = 0;
+        int total;
+        while(counter < numberSeries.length) {
+            total = sum;
+            total = total - numberSeries[counter];
+            if(total > maximumNumber) {
+                maximumNumber = total;
+            }
+            counter++;
+        }
+        return maximumNumber;
+    }
+
+    public static int findMinimumFromSumOf(int[] numberSeries) {
+        int counter = 0;
+        int sum = 0;
+
+        while(counter < numberSeries.length){
+            sum+=numberSeries[counter];
+            counter++;
+        }
+        counter = 0;
+        int minimumNumber = sum;
+        int total;
+        while(counter < numberSeries.length){
+            total = sum;
+            total = total - numberSeries[counter];
+            if(total < minimumNumber){
+                minimumNumber = total;
+            }
+            counter++;
+        }
+        return minimumNumber;
+    }
 }
