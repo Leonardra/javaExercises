@@ -3,11 +3,15 @@ package com.incluctab.tddClasses.bankApplication;
 import com.incluctab.tddClasses.Account;
 
 public class Customer {
-    private BankAccount newAccount = new BankAccount();
+    private BankAccount newAccount;
     private String firstName;
     private String lastName;
     private String phoneNumber;
     private int myPin;
+
+    public Customer(){
+        newAccount = new BankAccount();
+    }
 
     public String getPhoneNumber() {
         return phoneNumber;
@@ -17,25 +21,12 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
-    public Customer(String firstName, String lastName, String phoneNumber){
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
-    }
-
-    public Customer(){
-
-    }
-
-    public void setAccount(BankAccount newAccount) {
-        this.newAccount = newAccount;
-    }
-
     public BankAccount getAccount() {
         return newAccount;
     }
 
     public void setFirstName(String firstName) {
+        newAccount.setAccountName(firstName);
         this.firstName = firstName;
     }
 
@@ -74,11 +65,6 @@ public class Customer {
 
     public boolean confirmPin(int enterPin) {
         return myPin == enterPin;
-    }
-
-
-    public void transferFunds(BankAccount beneficiaryAccount, double amountToTransfer) {
-        newAccount.transferFunds(beneficiaryAccount, amountToTransfer);
     }
 
     public int getAccountNumber(){

@@ -11,9 +11,7 @@ public class CustomerTest {
     @Test
     void customerHasAccount(){
         Customer newCustomer = new Customer();
-        BankAccount newAccount = new BankAccount();
-        newAccount.setAccountName("Oluwatobi");
-        newCustomer.setAccount(newAccount);
+        newCustomer.getAccount().setAccountName("Oluwatobi");
         assertEquals("Oluwatobi", newCustomer.getAccount().getAccountName());
     }
 
@@ -33,14 +31,14 @@ public class CustomerTest {
 
     @Test
     void customerCanDeposit(){
-        Customer newCustomer = new Customer("Oluwatobi", "Jolayemi", "08166863370");
+        Customer newCustomer = new Customer();
         newCustomer.deposit(20000.0);
         assertEquals(20000, newCustomer.getAccountBalance());
     }
 
     @Test
     void customerCanWithdraw(){
-        Customer newCustomer = new Customer("Oluwatobi", "Jolayemi", "08166863770");
+        Customer newCustomer = new Customer();
         newCustomer.deposit(30000);
         newCustomer.withdraw(10000.00);
         assertEquals(20000.00, newCustomer.getAccountBalance());
@@ -48,7 +46,7 @@ public class CustomerTest {
 
     @Test
     void customerCanLoadAirtime(){
-        Customer newCustomer = new Customer("Oluwatobi", "Jolayemi", "08166863770");
+        Customer newCustomer = new Customer();
         newCustomer.deposit(3000);
         newCustomer.loadAirtime(2000.00, "08166863770");
         assertEquals(1000, newCustomer.getAccountBalance());
@@ -63,20 +61,11 @@ public class CustomerTest {
 
     @Test
     void thatCustomerCanSetPhoneNumber(){
-        Customer newCustomer = new Customer("Oluwatobi", "Jolayemi", "08166863770");
+        Customer newCustomer = new Customer();
         newCustomer.setPhoneNumber("08178966770");
         assertEquals("08178966770", newCustomer.getPhoneNumber());
     }
 
-    @Test
-    public void testThatCustomerCanTransfer() {
-        Customer newCustomer = new Customer("Oluwatobi", "Jolayemi", "08166863770");
-        newCustomer.deposit(10000);
-        BankAccount bankoleAccount = new BankAccount();
-        newCustomer.transferFunds(bankoleAccount, 4500);
-        assertEquals(5500, newCustomer.getAccountBalance());
-        assertEquals(4500, bankoleAccount.getAccountBalance());
-    }
 
 
 }

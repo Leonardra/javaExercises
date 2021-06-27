@@ -1,11 +1,19 @@
 package com.incluctab.tddClasses.bankApplication;
 
-import com.incluctab.tddClasses.Account;
 
 public class BankAccount {
+    private static int accountAssigner;
     private double myAccountBalance;
-    private int pin;
+    private final int accountNumber;
     private String accountName;
+    private int pin;
+
+
+    public BankAccount() {
+        accountAssigner++;
+        accountNumber = accountAssigner;
+    }
+
 
     public void deposit(double amountToDeposit) {
         boolean notTrue = amountToDeposit < 0;
@@ -44,8 +52,6 @@ public class BankAccount {
     }
 
 
-
-
     public double getAccountBalance() {
         return myAccountBalance;
     }
@@ -54,13 +60,10 @@ public class BankAccount {
         this.accountName = accountName;
     }
 
-    public void transferFunds(BankAccount beneficiary, double amountToTransfer) {
-
-        if(myAccountBalance >= amountToTransfer || myAccountBalance == amountToTransfer) {
-            beneficiary.deposit(amountToTransfer);
-            this.withdraw(amountToTransfer);
-        }
+    public String getAccountName() {
+        return accountName;
     }
+
 
     public void changePin(int oldPin, int newPin) {
         confirmPin(oldPin);
@@ -69,7 +72,14 @@ public class BankAccount {
     }
 
     public void loadAirtime(double airtimeAmount, String phoneNumber) {
-        this.withdraw(airtimeAmount);
-        System.out.println("Airtime has been purchased for "+phoneNumber);
+        if(phoneNumber.length() == 11) {
+            this.withdraw(airtimeAmount);
+            System.out.println("Airtime has been purchased for " + phoneNumber);
+        }
+    }
+
+
+    public int getAccountNumber() {
+        return accountNumber;
     }
 }

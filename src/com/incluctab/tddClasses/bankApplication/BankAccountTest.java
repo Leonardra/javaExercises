@@ -6,13 +6,27 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BankAccountTest {
+
+    @Test
+    void thatAccountCanGenerateAccountNumber(){
+        BankAccount newAccount = new BankAccount();
+        BankAccount newAccount2 = new BankAccount();
+        assertEquals(1, newAccount.getAccountNumber());
+        assertEquals(2, newAccount2.getAccountNumber());
+    }
+
+    @Test
+    void thatAccountHasAccountName(){
+        BankAccount tobiAccount = new BankAccount();
+        tobiAccount.setAccountName("Oluwatobi");
+        assertEquals("Oluwatobi", tobiAccount.getAccountName());
+    }
     @Test
     public void testThatAccountCanOpenOnce() {
         BankAccount tobiAccount = new BankAccount();
         tobiAccount.deposit(850.00);
         double tobiBalance = tobiAccount.getAccountBalance();
         assertEquals(850.00, tobiBalance);
-
     }
 
     @Test
@@ -53,17 +67,6 @@ public class BankAccountTest {
     }
 
     @Test
-    public void testThatAccountCanTransfer(){
-        BankAccount tobiAccount = new BankAccount();
-        tobiAccount.setPin(5555);
-        tobiAccount.deposit(10000);
-        BankAccount bankoleAccount = new BankAccount();
-        tobiAccount.transferFunds(bankoleAccount, 4500);
-        assertEquals(5500, tobiAccount.getAccountBalance());
-        assertEquals(4500, bankoleAccount.getAccountBalance());
-    }
-
-    @Test
     public void testThatAccountCanChangePin(){
         BankAccount tobiAccount = new BankAccount();
         tobiAccount.setPin(4440);
@@ -79,4 +82,6 @@ public class BankAccountTest {
         tobiAccount.loadAirtime(2000.00, "08166863770");
         assertEquals(8000, tobiAccount.getAccountBalance());
     }
+
+
 }

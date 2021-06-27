@@ -1,15 +1,15 @@
 package com.incluctab.tddClasses.bankApplication;
 
-import com.incluctab.tddClasses.Account;
-
 import java.util.Scanner;
 
-public class BankApp<newCustomer> {
+public class BankApp {
 
-    private static Scanner inputCollector = new Scanner(System.in);
+    private static final Scanner inputCollector = new Scanner(System.in);
     private static Customer newCustomer = new Customer();
+    private static Customer newCustomer2 = new Customer();
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws InterruptedException {
         displayBankName();
         displayLineBreak();
         collectMainMenuInput();
@@ -33,7 +33,7 @@ public class BankApp<newCustomer> {
         System.out.println(lineBreak);
     }
 
-    public static void collectMainMenuInput(){
+    public static void collectMainMenuInput() throws InterruptedException {
         int mainInput;
         do {
             displayMainMenu();
@@ -67,7 +67,7 @@ public class BankApp<newCustomer> {
         }
     }
 
-    public static void displayCustomerEntryPoint(){
+    public static void displayCustomerEntryPoint() throws InterruptedException {
         int collectCustomerInput;
         do {
             String entryPoint = """
@@ -80,7 +80,10 @@ public class BankApp<newCustomer> {
             collectCustomerInput = inputCollector.nextInt();
 
             switch (collectCustomerInput) {
-                case 1 -> displayCustomerMenu();
+                case 1 ->{
+                    registerCustomer();
+                    displayCustomerMenu();
+                }
                 case 2 -> {
                     loginCustomer();
                     displayCustomerMenu();
@@ -89,15 +92,40 @@ public class BankApp<newCustomer> {
         }while(collectCustomerInput != 3);
     }
 
+    public static void registerCustomer(){
+
+        System.out.println("Enter first name: ");
+        String firstName = inputCollector.next();
+        newCustomer.setFirstName(firstName);
+
+        System.out.println("Enter last name: ");
+        String lastName = inputCollector.next();
+        newCustomer.setLastName(lastName);
+
+        System.out.println("Enter phone number: ");
+        String phoneNumber = inputCollector.next();
+        newCustomer.setPhoneNumber(phoneNumber);
+
+        System.out.println("Create your personal pin: ");
+        int customerPin = inputCollector.nextInt();
+        newCustomer.setPin(customerPin);
+
+        Bank.createAccountWith(newCustomer);
+    }
+
     public static void loginCustomer(){
         System.out.println("Enter account no: ");
         int collectAccountNumber = inputCollector.nextInt();
 
         System.out.println("Enter your pin: ");
         int collectPin = inputCollector.nextInt();
+
+        Bank.isLogIn(collectAccountNumber, collectPin);
+
+
     }
 
-    public static void displayCustomerMenu(){
+    public static void displayCustomerMenu() throws InterruptedException {
         int customerMenuInput;
         do {
             String customerMenu = """
@@ -117,6 +145,7 @@ public class BankApp<newCustomer> {
                     System.out.println("Enter amount to Deposit");
                     double amountToDeposit = inputCollector.nextDouble();
                     newCustomer.deposit(amountToDeposit);
+                    Thread.sleep(20);
                     break;
                 case 2:
                     System.out.println("WITHDRAW");
@@ -125,11 +154,22 @@ public class BankApp<newCustomer> {
                     System.out.println("Enter amount to withdraw");
                     double amountToWithdraw = inputCollector.nextDouble();
                     newCustomer.withdraw(amountToWithdraw);
+                    Thread.sleep(20);
                     break;
                 case 3:
                     System.out.println("TRANSFER");
                     displayEmptySpace(2);
                     displayLineBreak();
+                    System.out.println("Enter your account number: ");
+                    int accountNumber = inputCollector.nextInt();
+                    Thread.sleep(20);
+                    System.out.println("Enter beneficiary account: ");
+                    int beneficiaryAccount = inputCollector.nextInt();
+                    Thread.sleep(20);
+                    System.out.println("Enter amount to transfer: ");
+                    double amountToTransfer = inputCollector.nextDouble();
+                    Bank.transfer(accountNumber, beneficiaryAccount,amountToTransfer);
+                    Thread.sleep(20);
                     break;
                 case 4:
                     System.out.println("LOAD AIRTIME");
@@ -137,9 +177,11 @@ public class BankApp<newCustomer> {
                     displayLineBreak();
                     System.out.println("Enter amount of airtime: ");
                     double airtimeAmount = inputCollector.nextDouble();
+                    Thread.sleep(20);
                     System.out.println("Enter phone number: ");
                     String phoneNumber = inputCollector.nextLine();
                     newCustomer.loadAirtime(airtimeAmount, phoneNumber);
+                    Thread.sleep(20);
                     break;
                 case 5:
                     break;
