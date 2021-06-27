@@ -6,7 +6,26 @@ public class Customer {
     private BankAccount newAccount = new BankAccount();
     private String firstName;
     private String lastName;
-    private double accountBalance;
+    private String phoneNumber;
+    private int myPin;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Customer(String firstName, String lastName, String phoneNumber){
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Customer(){
+
+    }
 
     public void setAccount(BankAccount newAccount) {
         this.newAccount = newAccount;
@@ -47,5 +66,22 @@ public class Customer {
 
     public void loadAirtime(double airtime, String phoneNumber) {
         newAccount.loadAirtime(airtime, phoneNumber);
+    }
+
+    public void setPin(int customerPin) {
+        this.myPin = customerPin;
+    }
+
+    public boolean confirmPin(int enterPin) {
+        return myPin == enterPin;
+    }
+
+
+    public void transferFunds(BankAccount beneficiaryAccount, double amountToTransfer) {
+        newAccount.transferFunds(beneficiaryAccount, amountToTransfer);
+    }
+
+    public int getAccountNumber(){
+        return newAccount.getAccountNumber();
     }
 }
