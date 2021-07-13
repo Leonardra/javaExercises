@@ -6,7 +6,7 @@ import static com.incluctab.tddClasses.turtleGraphics.PenPosition.*;
 public class Turtle {
 
     private Pen pen;
-     Direction currentDirection;
+    private Direction currentDirection;
     private TurtlePosition myPosition;
 
     public Turtle() {
@@ -66,9 +66,42 @@ public class Turtle {
     }
 
     public void moveForward(int numberOfSteps) {
-        if(currentDirection == SOUTH)myPosition.increaseRowPositionBy(numberOfSteps);
-        if(currentDirection == WEST)myPosition.decreaseColumnPositionBy(numberOfSteps);
-        if(currentDirection == EAST)myPosition.increaseColumnPositionBy(numberOfSteps);
-        if(currentDirection == NORTH)myPosition.decreaseRowPositionBy(numberOfSteps);
+        switch (currentDirection) {
+            case SOUTH -> myPosition.increaseRowPositionBy(numberOfSteps-1);
+            case WEST -> myPosition.decreaseColumnPositionBy(numberOfSteps-1);
+            case EAST -> myPosition.increaseColumnPositionBy(numberOfSteps-1);
+            case NORTH -> myPosition.decreaseRowPositionBy(numberOfSteps-1);
+        }
+
+    }
+
+    public void moveForward(int numberOfSteps, Sketchpad sketchpad) {
+        if(pen.getPosition().equals(DOWN)){
+                int columnPosition = myPosition.getColumnPosition();
+                int rowPosition = myPosition.getRowPosition();
+            switch (currentDirection){
+                case EAST -> {
+                    for (int i = columnPosition; i < columnPosition+numberOfSteps; i++) {
+                    sketchpad.getFloor()[rowPosition][i] = 1;
+                    }
+                }
+                case WEST -> {
+                    for (int i = columnPosition; i > columnPosition-numberOfSteps; i--) {
+                    sketchpad.getFloor()[rowPosition][i] = 1;
+                    }
+                }
+                case SOUTH -> {
+                    for (int i = rowPosition; i < rowPosition+numberOfSteps; i++) {
+                    sketchpad.getFloor()[i][columnPosition] = 1;
+                    }
+                }
+                case NORTH -> {
+                    for (int i = rowPosition; i > rowPosition-numberOfSteps; i--) {
+                    sketchpad.getFloor()[i][columnPosition] = 1;
+                    }
+                }
+            }
+        }
+        moveForward(numberOfSteps);
     }
 }

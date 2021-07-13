@@ -178,7 +178,7 @@ public class TurtleTest {
         newTurtle.moveForward(5);
         //assert
         TurtlePosition newPosition = newTurtle.getTurtlePosition();
-        assertEquals(5, newPosition.getColumnPosition());
+        assertEquals(4, newPosition.getColumnPosition());
         assertEquals(0, newPosition.getRowPosition());
     }
 
@@ -194,37 +194,40 @@ public class TurtleTest {
         //assert
         TurtlePosition newPosition = newTurtle.getTurtlePosition();
         assertEquals(0, newPosition.getColumnPosition());
-        assertEquals(5, newPosition.getRowPosition());
+        assertEquals(4, newPosition.getRowPosition());
     }
 
     @Test
     void thatTurtleCanMoveForwardWhileFacingWest(){
+        //given
         Turtle newTurtle = new Turtle();
         newTurtle.moveForward(5);
         TurtlePosition position = newTurtle.getTurtlePosition();
-        assertEquals(5, position.getColumnPosition());
+        assertEquals(4, position.getColumnPosition());
         assertEquals(0, position.getRowPosition());
+        newTurtle.turnRight();
+        newTurtle.turnRight();
         //when
-        newTurtle.turnRight();
-        newTurtle.turnRight();
         newTurtle.moveForward(5);
         //assert
         TurtlePosition newPosition = newTurtle.getTurtlePosition();
         assertEquals(0, newPosition.getColumnPosition());
         assertEquals(0, newPosition.getRowPosition());
+        assertSame(WEST, newTurtle.getDirection());
     }
 
     @Test
     void thatTurtleCanMoveForwardWhileFacingNorth(){
+        //given
         Turtle newTurtle = new Turtle();
         newTurtle.turnRight();
         newTurtle.moveForward(5);
         TurtlePosition position = newTurtle.getTurtlePosition();
         assertEquals(0, position.getColumnPosition());
-        assertEquals(5, position.getRowPosition());
+        assertEquals(4, position.getRowPosition());
+        newTurtle.turnRight();
+        newTurtle.turnRight();
         //when
-        newTurtle.turnRight();
-        newTurtle.turnRight();
         newTurtle.moveForward(5);
         //assert
         TurtlePosition newPosition = newTurtle.getTurtlePosition();
@@ -232,5 +235,98 @@ public class TurtleTest {
         assertEquals(0, newPosition.getRowPosition());
     }
 
+    @Test
+    void thatTurtleCanWriteEastwardWhenPenIsDown(){
+        //given
+        Sketchpad sketchpad = new Sketchpad(20,20);
+        Turtle newTurtle = new Turtle();
+        newTurtle.turnPenDown();
+        //when
+        newTurtle.moveForward(5, sketchpad);
+        //assert
+        assertEquals(1,sketchpad.getFloor()[0][0]);
+        assertEquals(1,sketchpad.getFloor()[0][1]);
+        assertEquals(1,sketchpad.getFloor()[0][2]);
+        assertEquals(1,sketchpad.getFloor()[0][3]);
+        assertEquals(1,sketchpad.getFloor()[0][4]);
+        assertEquals(0,sketchpad.getFloor()[0][5]);
+
+        TurtlePosition position = newTurtle.getTurtlePosition();
+        assertEquals(4, position.getColumnPosition());
+        assertEquals(0, position.getRowPosition());
+
+    }
+
+    @Test
+    void thatTurtleCanWriteWestwardWhenPenIsDown(){
+        //given
+        Sketchpad sketchpad = new Sketchpad(20,20);
+        Turtle newTurtle = new Turtle();
+        newTurtle.moveForward(5);
+        newTurtle.turnRight();
+        newTurtle.turnRight();
+        newTurtle.turnPenDown();
+        assertSame(WEST, newTurtle.getDirection());
+        //when
+        newTurtle.moveForward(5, sketchpad);
+        //assert
+        assertEquals(1,sketchpad.getFloor()[0][0]);
+        assertEquals(1,sketchpad.getFloor()[0][1]);
+        assertEquals(1,sketchpad.getFloor()[0][2]);
+        assertEquals(1,sketchpad.getFloor()[0][3]);
+        assertEquals(1,sketchpad.getFloor()[0][4]);
+
+        TurtlePosition position = newTurtle.getTurtlePosition();
+        assertEquals(0, position.getColumnPosition());
+        assertEquals(0, position.getRowPosition());
+    }
+
+    @Test
+    void thatTurtleCanWriteSouthwardWhenPenIsDown(){
+        //given
+        Sketchpad sketchpad = new Sketchpad(20,20);
+        Turtle newTurtle = new Turtle();
+        newTurtle.turnRight();
+        newTurtle.turnPenDown();
+        assertSame(SOUTH, newTurtle.getDirection());
+        //when
+        newTurtle.moveForward(5, sketchpad);
+        //assert
+        assertEquals(1,sketchpad.getFloor()[0][0]);
+        assertEquals(1,sketchpad.getFloor()[1][0]);
+        assertEquals(1,sketchpad.getFloor()[2][0]);
+        assertEquals(1,sketchpad.getFloor()[3][0]);
+        assertEquals(1,sketchpad.getFloor()[4][0]);
+        assertEquals(0,sketchpad.getFloor()[5][0]);
+
+        TurtlePosition position = newTurtle.getTurtlePosition();
+        assertEquals(0, position.getColumnPosition());
+        assertEquals(4, position.getRowPosition());
+    }
+
+    @Test
+    void thatTurtleCanWriteNorthwardWhenPenIsDown(){
+        //given
+        Sketchpad sketchpad = new Sketchpad(20,20);
+        Turtle newTurtle = new Turtle();
+        newTurtle.turnRight();
+        newTurtle.moveForward(5);
+        newTurtle.turnRight();
+        newTurtle.turnRight();
+        newTurtle.turnPenDown();
+        assertSame(NORTH, newTurtle.getDirection());
+        //when
+        newTurtle.moveForward(5, sketchpad);
+        //assert
+        assertEquals(1,sketchpad.getFloor()[0][0]);
+        assertEquals(1,sketchpad.getFloor()[1][0]);
+        assertEquals(1,sketchpad.getFloor()[2][0]);
+        assertEquals(1,sketchpad.getFloor()[3][0]);
+        assertEquals(1,sketchpad.getFloor()[4][0]);
+
+        TurtlePosition position = newTurtle.getTurtlePosition();
+        assertEquals(0, position.getColumnPosition());
+        assertEquals(0, position.getRowPosition());
+    }
 
 }
