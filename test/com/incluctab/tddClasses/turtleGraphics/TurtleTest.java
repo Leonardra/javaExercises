@@ -2,8 +2,6 @@ package com.incluctab.tddClasses.turtleGraphics;
 
 import org.junit.jupiter.api.Test;
 
-import javax.swing.text.Position;
-
 import static com.incluctab.tddClasses.turtleGraphics.Direction.*;
 import static com.incluctab.tddClasses.turtleGraphics.PenPosition.*;
 import static org.junit.jupiter.api.Assertions.*;
