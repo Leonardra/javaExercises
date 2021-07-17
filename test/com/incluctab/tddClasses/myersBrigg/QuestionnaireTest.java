@@ -21,7 +21,7 @@ public class QuestionnaireTest {
         //assert
         assertNotNull(questionList);
         assertFalse(questionList.isEmpty());
-        assertEquals(22, questionList.size());
+        assertEquals(20, questionList.size());
     }
 
     @Test

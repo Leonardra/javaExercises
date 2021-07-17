@@ -30,22 +30,16 @@ public class Questionnaire {
         questionList.add(new Question("Seek many tasks, public activities, interaction with others",
                                 "Seek private, solitary activities with quiet to concentrate"));
         questionList.add(new Question("Standard, usual, conventional", "Different, novel, unique"));
-        questionList.add(new Question("Standard, usual, conventional", "Different, novel, unique"));
-
-        //duplicated
-        Question question = new Question("Expend energy, enjoy groups","Conserve energy, enjoy one-on-one");
-        questionList.add(question);
-        questionList.add(new Question("Interpret literally", "Look for meaning and possibilities"));
-        questionList.add(new Question("Logical, thinking, questioning", "Empathetic, feeling, accommodating"));
-        questionList.add(new Question("Organized, orderly", "Flexible, adaptable"));
-        questionList.add(new Question("More outgoing, think out loud", "More reserved, think to yourself"));
-        questionList.add(new Question("Practical, realistic, experiential", "Imaginative, innovative, theoretical"));
-        questionList.add(new Question("Candid, straight forward, frank", "Tactful, kind, encouraging"));
-        questionList.add(new Question("Plan, schedule", "Unplanned, spontaneous"));
-        questionList.add(new Question("Seek many tasks, public activities, interaction with others",
-                "Seek private, solitary activities with quiet to concentrate"));
-        questionList.add(new Question("Standard, usual, conventional", "Different, novel, unique"));
-        questionList.add(new Question("Standard, usual, conventional", "Different, novel, unique"));
+        questionList.add(new Question("Firm, tend to criticize, hold the line", "Gentle, tend to appreciate, conciliate"));
+        questionList.add(new Question("Regulated, structured", "Easygoing, “live” and “let live”"));
+        questionList.add(new Question("External, communicative, express yourself", "Internal, reticent, keep to yourself"));
+        questionList.add(new Question("Focus on here-and-now", "Look to the future, global perspective, “big picture”"));
+        questionList.add(new Question("Tough-minded, just", " Tender-hearted, merciful"));
+        questionList.add(new Question("Preparation, plan ahead", "Go with the flow, adapt as you go"));
+        questionList.add(new Question("Active, initiate", "Reflective, deliberate"));
+        questionList.add(new Question("Facts, things, “what is”", "Ideas, dreams, “what could be,” philosophical"));
+        questionList.add(new Question("Matter of fact, issue-oriented", "Sensitive, people-oriented, compassionate"));
+        questionList.add(new Question("Control, govern", "Latitude, freedom"));
 
     }
 
