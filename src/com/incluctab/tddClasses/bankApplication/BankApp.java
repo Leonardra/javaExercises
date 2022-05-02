@@ -61,6 +61,27 @@ public class BankApp {
         System.out.println(staffMenu);
     }
 
+    public static void staffEntryPoint(){
+        int collectStaffInput;
+        String entryPoint = """
+                    Enter 1 to REGISTER
+                    Enter 2 to LOGIN
+                    Enter 3 to go to MAIN MENU
+                    """;
+        System.out.println(entryPoint);
+
+        collectStaffInput = inputCollector.nextInt();
+
+        switch (collectStaffInput){
+            case 1:
+                displayStaffMenu();
+                break;
+            case 2:
+                displayStaffMenu();
+                break;
+        }
+    }
+
     public static void displayEmptySpace(int numberOfSpaces){
         for (int i = 0; i < numberOfSpaces; i++) {
             System.out.println(" ");
@@ -111,6 +132,8 @@ public class BankApp {
         newCustomer.setPin(customerPin);
 
         Bank.createAccountWith(newCustomer);
+        displayEmptySpace(50);
+        System.out.println(newCustomer.getAccount());
     }
 
     public static void loginCustomer(){
@@ -146,6 +169,8 @@ public class BankApp {
                     double amountToDeposit = inputCollector.nextDouble();
                     newCustomer.deposit(amountToDeposit);
                     Thread.sleep(20);
+                    displayEmptySpace(50);
+                    System.out.println(newCustomer.getAccount());
                     break;
                 case 2:
                     System.out.println("WITHDRAW");
@@ -155,6 +180,8 @@ public class BankApp {
                     double amountToWithdraw = inputCollector.nextDouble();
                     newCustomer.withdraw(amountToWithdraw);
                     Thread.sleep(20);
+                    displayEmptySpace(50);
+                    System.out.println(newCustomer.getAccount());
                     break;
                 case 3:
                     System.out.println("TRANSFER");
@@ -170,6 +197,8 @@ public class BankApp {
                     double amountToTransfer = inputCollector.nextDouble();
                     Bank.transfer(accountNumber, beneficiaryAccount,amountToTransfer);
                     Thread.sleep(20);
+                    displayEmptySpace(50);
+                    System.out.println(newCustomer.getAccount());
                     break;
                 case 4:
                     System.out.println("LOAD AIRTIME");
@@ -182,6 +211,8 @@ public class BankApp {
                     String phoneNumber = inputCollector.nextLine();
                     newCustomer.loadAirtime(airtimeAmount, phoneNumber);
                     Thread.sleep(20);
+                    displayEmptySpace(50);
+                    System.out.println(newCustomer.getAccount());
                     break;
                 case 5:
                     break;

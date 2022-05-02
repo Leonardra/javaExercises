@@ -1,9 +1,12 @@
 package com.incluctab.tddClasses.eStore;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ShoppingCart {
-    private Item item;
+    private List<Item> item;
 
     public ShoppingCart(){
-        this.item = new Item();
+        item = new ArrayList<>();
     }
 }

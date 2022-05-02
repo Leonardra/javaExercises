@@ -14,6 +14,15 @@ public class BankAccount {
         accountNumber = accountAssigner;
     }
 
+    @Override
+    public String toString() {
+        return "BankAccount{" +
+                "Account Number" + accountNumber +
+                ", accountName='" + accountName + '\''+
+        "Your Account balance is " + myAccountBalance +"}";
+    }
+
+
 
     public void deposit(double amountToDeposit) {
         boolean notTrue = amountToDeposit < 0;

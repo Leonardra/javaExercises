@@ -3,29 +3,35 @@ package com.incluctab.tddClasses.chapterFour;
 import java.util.Scanner;
 
 public class GasMileage {
+
+    private static double totalMilesPerGallon;
+
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        int milesPerDrive = 0;
-        int gasUsage = 0;
-        int sentinelValue = -1;
-        int totalMilesPerGallon = 0;
 
-        while(milesPerDrive != sentinelValue || gasUsage != sentinelValue) {
+        int milesDriven = 0;
 
-            System.out.println("Enter miles driven: ");
-            milesPerDrive = input.nextInt();
+        do {
+            System.out.println("Enter miles driven or -1 to exit");
+            milesDriven = input.nextInt();
 
-            System.out.println("Enter gas usage");
-            gasUsage = input.nextInt();
-
-            if(milesPerDrive != sentinelValue && gasUsage != sentinelValue) {
-                int milesPerGallon = milesPerDrive / gasUsage;
-                System.out.println("Miles Per Gallon: " + milesPerGallon);
-
-                totalMilesPerGallon = milesPerGallon + totalMilesPerGallon;
+            if(milesDriven == -1){
+                break;
             }
 
-        }
+            System.out.println("Enter gallons used or -1 to exit");
+            int gallonsUsed = input.nextInt();
+
+            calculateMilesPerGallon(milesDriven, gallonsUsed);
+        }while(milesDriven != -1);
+
         System.out.println("Total miles per gallon is "+totalMilesPerGallon);
+
+    }
+    public static void calculateMilesPerGallon(int milesDriven, int usedGallon){
+        double milePerGallon = milesDriven / usedGallon;
+        System.out.println("Miles Per Gallon for this trip is " +milePerGallon);
+
+        totalMilesPerGallon += milePerGallon;
     }
 }

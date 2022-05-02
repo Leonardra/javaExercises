@@ -28,7 +28,6 @@ public class Calculator {
     public int subtract(int valueOne, int value2) {
     int product = (valueOne - value2);
 
-
     if(product < 0){
         return 0;
     } else

@@ -107,7 +107,6 @@ public class KataTest {
     public void testThatBaseNumberConverterWorks(){
         Kata.numberBaseConverter(18,2);
         assertEquals("10010", Kata.numberBaseConverter(18, 2));
-        assertEquals("A", Kata.numberBaseConverter(10,18));
     }
 
     @Test
@@ -143,6 +142,10 @@ public class KataTest {
         assertEquals(10, Kata.findMinimumFromSumOf(numberSeries));
     }
 
+    @Test
+    void thatMethodCanReturnTheNextSequence(){
+        assertEquals(8, Kata.getNextSequence(2,4,6));
+    }
 
 
 

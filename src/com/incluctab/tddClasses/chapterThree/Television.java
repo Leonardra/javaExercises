@@ -6,7 +6,8 @@ public class Television {
     private int channel;
     private int temporaryChannel;
     private int brightness;
-    private boolean mute;
+    private boolean isMute;
+
 
     public Television(String brandName) {
 
@@ -38,7 +39,7 @@ public class Television {
     }
 
     public void decreaseVolume() {
-        if(isOn && !mute) {
+        if(isOn && !isMute) {
             volume = volume - 1;
             if(volume < 0){
                 this.setMute(true);
@@ -89,10 +90,10 @@ public class Television {
     }
 
     public void setMute(boolean mute) {
-        this.mute = mute;
+        this.isMute = mute;
     }
 
     public boolean getMute() {
-        return mute;
+        return isMute;
     }
 }

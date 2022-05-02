@@ -218,4 +218,11 @@ public class Kata {
         }
         return minimumNumber;
     }
+
+    public static int getNextSequence(int firstNumber, int secondNumber, int thirdNumber) {
+        int commonDifference = thirdNumber - secondNumber;
+        int nextNumber = thirdNumber + commonDifference;
+
+        return nextNumber;
+    }
 }

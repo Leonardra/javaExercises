@@ -14,6 +14,10 @@ public class Item {
         this.totalPrice = totalPrice;
     }
 
+    public Item() {
+
+    }
+
     public double getTotalPrice(){
         return totalPrice;
     }

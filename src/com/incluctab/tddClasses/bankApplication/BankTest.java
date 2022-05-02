@@ -14,9 +14,21 @@ public class BankTest {
 
     @Test
     void thatBankCanCreateAccountForCustomers(){
-        Bank newBank = new Bank();
         Customer newCustomer = new Customer();
         Bank.createAccountWith(newCustomer);
-        assertEquals(1, newBank.getCustomerList().size() );
+        assertEquals(1, Bank.getCustomerList().size());
+    }
+
+    @Test
+    void thatBankCanDeleteCustomer(){
+        //given
+        Customer newCustomerOne = new Customer();
+        Bank.createAccountWith(newCustomerOne);
+        Customer newCustomerTwo = new Customer();
+        Bank.createAccountWith(newCustomerTwo);
+        //when
+        Bank.deleteCustomer(2);
+        //assert that
+        assertEquals(1, Bank.getCustomerList().size() );
     }
 }

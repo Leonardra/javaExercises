@@ -33,5 +33,8 @@ public class GradeApp {
         if(userInput <= 59){
             System.out.println("F");
         }
+
     }
+
+
 }

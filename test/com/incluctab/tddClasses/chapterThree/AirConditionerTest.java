@@ -69,4 +69,5 @@ public class AirConditionerTest {
         myAirConditioner.setOn(true);
         assertEquals(16, myAirConditioner.getTemperature());
     }
+
 }

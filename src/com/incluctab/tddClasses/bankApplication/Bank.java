@@ -27,7 +27,6 @@ public class Bank {
             if(customer.getAccountBalance() == accountNumber){
                 customer.confirmPin(pin);
                 return true;
-
             }
         }
         return false;
@@ -56,4 +55,7 @@ public class Bank {
     }
 
 
+    public static void deleteCustomer(int accountNumber) {
+        bankCustomers.removeIf(customer -> customer.getAccountNumber() == accountNumber);
+    }
 }

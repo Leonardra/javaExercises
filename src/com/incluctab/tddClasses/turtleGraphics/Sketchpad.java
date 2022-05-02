@@ -18,7 +18,7 @@ public class Sketchpad {
                 if (block == 1)
                 System.out.print("# ");
                 else{
-                    System.out.print("0 ");
+                    System.out.print("  ");
                 }
             }
             System.out.println();
